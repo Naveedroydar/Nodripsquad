@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>No Drip Squad | Ottawa's Painting Professionals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C0392B;
+      --navy: #1A2E4A;
+      --white: #FFFFFF;
+      --light: #F7F8FA;
+      --light2: #EEF0F4;
+      --text: #222222;
+      --muted: #666;
+      --border: #E2E5EA;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--white); }
+
+    h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce-bar {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .announce-bar span { margin: 0 12px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    .logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .logo-text span { color: var(--red); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: #a93226 !important; color: #fff !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 25px; height: 2px; background: var(--navy); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px;
+      gap: 14px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,46,74,0.88) 45%, rgba(26,46,74,0.3));
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 24px;
+      max-width: 680px;
+      padding-left: 60px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #F5C842; }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-primary:hover { background: #a93226; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-outline:hover { background: #fff; color: var(--navy); transform: translateY(-2px); }
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .trust-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 24px; }
+    .container { max-width: 1200px; margin: auto; }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 32px 24px;
+    }
+    .stats-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .stat-item { color: #fff; }
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #F5C842;
+      display: block;
+    }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-size: 1.02rem;
+    }
+    .discount-callout {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin-top: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .discount-callout .icon { font-size: 2rem; flex-shrink: 0; }
+    .discount-callout strong { display: block; font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 6px; }
+    .discount-callout p { color: rgba(255,255,255,0.82); font-size: 0.92rem; margin: 0; line-height: 1.6; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--light); }
+    .services-intro { margin-bottom: 60px; }
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+    .service-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+    .service-block h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .service-block p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .service-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+    }
+    .service-list li {
+      color: var(--text);
+      font-size: 0.93rem;
+      font-weight: 600;
+      padding-left: 20px;
+      position: relative;
+    }
+    .service-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 700;
+    }
+    .extra-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .extra-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 30px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .extra-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .extra-card .icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .extra-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .extra-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── WHY US ── */
+    #why { background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+    }
+    .why-card {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 32px 24px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .why-card:hover { transform: translateY(-4px); }
+    .why-card .icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .why-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .why-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── DISCOUNT BANNER ── */
+    #discount {
+      background: var(--red);
+      padding: 70px 24px;
+      text-align: center;
+    }
+    #discount .icon { font-size: 3rem; margin-bottom: 18px; }
+    #discount h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    #discount p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--red);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-white:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+
+    /* ── SERVICE AREAS ── */
+    #areas { background: var(--light); }
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .area-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 10px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--navy);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+    .area-tag:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .areas-note {
+      text-align: center;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .areas-note strong { color: var(--red); }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,46,74,0.8) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-label {
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .gallery-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .gallery-cta p { color: var(--muted); margin-bottom: 16px; font-size: 1rem; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--light); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .stars { color: #F5C842; font-size: 1.1rem; margin-bottom: 16px; }
+    .quote-mark {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 4rem;
+      color: var(--light2);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .testimonial-card p {
+      color: var(--text);
+      font-size: 0.96rem;
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+    .testimonial-author span {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-form {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+    .contact-form h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--navy);
+      margin-bottom: 7px;
+      letter-spacing: 0.2px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.95rem;
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26,46,74,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 6px;
+    }
+    .form-submit:hover { background: #a93226; transform: translateY(-2px); }
+    .contact-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .contact-info > p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 20px;
+      background: var(--light);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .contact-detail .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .contact-detail strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: var(--red);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .contact-detail p { color: var(--text); font-size: 0.95rem; margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 24px 0;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand .logo { color: #fff; font-size: 1.5rem; }
+    .footer-brand .logo span { color: #F5C842; }
+    .footer-tagline { font-size: 0.88rem; margin: 12px 0 20px; line-height: 1.6; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .social-link:hover { background: var(--red); }
+    .footer-col h5 {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #F5C842; }
+    .footer-areas { display: flex; flex-wrap: wrap; gap: 6px; }
+    .footer-area-tag {
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.82rem;
+    }
+    .footer-bottom .discount-note { color: #F5C842; font-weight: 600; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .service-block, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .service-block.reverse { direction: ltr; }
+      .extra-services { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-content { padding: 60px 24px; }
+      section { padding: 60px 24px; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .announce-bar span { display: block; margin: 4px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar">
+    <span>🎖️ Senior &amp; Military Discounts Available</span>
+    <span>✅ Free Estimates</span>
+    <span>📞 Call Us Today: (613) 000-0000</span>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo"><img src="NoDripSquad.jpg" alt="No Drip Squad Logo"/></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="#gallery">Our Work</a></li>
+        <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#services" onclick="toggleMenu()">Services</a>
+      <a href="#areas" onclick="toggleMenu()">Service Areas</a>
+      <a href="#gallery" onclick="toggleMenu()">Our Work</a>
+      <a href="#discount" onclick="toggleMenu()">🎖️ Discounts</a>
+      <a href="#contact" onclick="toggleMenu()">Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Ottawa's Painting Professionals</div>
+      <h1>We Don't Miss.<br/><span>Not Even a Drip.</span></h1>
+      <p>Residential &amp; Commercial Painting across Ottawa and surrounding communities within 60km. Precision you can see. Quality you can trust.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="trust-badges">
+        <span class="trust-badge">✅ Licensed &amp; Insured</span>
+        <span class="trust-badge">🎖️ Senior &amp; Military Discounts</span>
+        <span class="trust-badge">⭐ 5-Star Rated</span>
+        <span class="trust-badge">📍 Serving 60km Around Ottawa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-item"><span class="stat-num">500+</span><div class="stat-label">Projects Completed</div></div>
+      <div class="stat-item"><span class="stat-num">10+</span><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-item"><span class="stat-num">60km</span><div class="stat-label">Service Radius</div></div>
+      <div class="stat-item"><span class="stat-num">100%</span><div class="stat-label">Satisfaction Guaranteed</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
+          alt="Professional painter at work"
+          class="about-img"
+        />
+        <div class="about-text">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Who Is No Drip Squad?</h2>
+          <p>No Drip Squad is Ottawa's go-to painting crew for homeowners and businesses who refuse to settle for anything less than flawless. Locally owned and operated, we bring skill, precision, and zero mess to every single job.</p>
+          <p>We've been proudly serving the Ottawa area and surrounding communities within 60km for over a decade. Every project begins with a free, detailed estimate and concludes with a full walk-through to ensure your complete satisfaction — no exceptions.</p>
+          <div class="discount-callout">
+            <div class="icon">🎖️</div>
+            <div>
+              <strong>Senior &amp; Military Discounts Available</strong>
+              <p>We proudly offer exclusive discounts for Ottawa's senior residents and active or veteran military members. Ask us about it when you book your free estimate!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-intro fade-in">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Our Painting Services</h2>
+        <p class="section-sub">From a single accent wall to a full commercial build-out, No Drip Squad handles it all with the same level of precision and care.</p>
+      </div>
+
+      <!-- Interior -->
+      <div class="service-block fade-in">
+        <div>
+          <h3>🏠 Interior Residential Painting</h3>
+          <p>We paint all interior surfaces including walls, ceilings, trim, stairs, closets, basements, and hard-to-reach areas. We handle drywall and texture repairs, wallpaper removal, stipple ceiling repair, caulking, and more. We use your paint of choice or purchase it for you.</p>
+          <ul class="service-list">
+            <li>Walls &amp; Ceilings</li>
+            <li>Trim &amp; Baseboards</li>
+            <li>Stairs &amp; Hallways</li>
+            <li>Basements &amp; Closets</li>
+            <li>Wallpaper Removal</li>
+            <li>Drywall Repair</li>
+          </ul>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+          alt="Interior painting"
+          class="service-img"
+        />
+      </div>
+
+      <!-- Exterior -->
+      <div class="service-block reverse fade-in">
+        <div>
+          <h3>🏡 Exterior Residential Painting</h3>
+          <p>Our exterior painting services cover all outdoor surfaces and structures. Built for Ottawa's seasons — we use latex, urethane, or elastomeric coatings as needed and determined together with you.</p>
+          <ul class="service-list">
+            <li>Houses &amp; Garages</li>
+            <li>Fences &amp; Decks</li>
+            <li>Siding &amp; Soffit</li>
+            <li>Doors &amp; Frames</li>
+            <li>Stucco &amp; Concrete</li>
+            <li>Wood &amp; Metal Surfaces</li>
+          </ul>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80"
+          alt="Exterior house painting"
+          class="service-img"
+        />
+      </div>
+
+      <!-- Extra Services -->
+      <div class="fade-in">
+        <h3 style="text-align:center; color:var(--navy); font-size:1.5rem; margin-bottom:28px;">Additional Services</h3>
+        <div class="extra-services">
+          <div class="extra-card">
+            <div class="icon">🗄️</div>
+            <h4>Cabinet Refinishing</h4>
+            <p>Transform your kitchen without the full renovation price tag. We refinish and repaint cabinets to look brand new.</p>
+          </div>
+          <div class="extra-card">
+            <div class="icon">🌲</div>
+            <h4>Deck &amp; Fence Staining</h4>
+            <p>Protect and beautify your outdoor spaces with professional staining and weatherproofing treatments.</p>
+          </div>
+          <div class="extra-card">
+            <div class="icon">🎨</div>
+            <h4>Colour Consultation</h4>
+            <p>Not sure what to pick? Our experts guide you to the perfect palette for your home or business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="container">
+      <div class="fade-in" style="text-align:center">
+        <p class="section-label">Our Promise</p>
+        <h2 class="section-title">The No Drip Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <div class="icon">🧹</div>
+          <h4>Zero-Mess Guarantee</h4>
+          <p>We protect your space with drop cloths, tape, and careful covering — and clean up completely when we're done.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="icon">🛡️</div>
+          <h4>Licensed &amp; Fully Insured</h4>
+          <p>Every job is fully covered. You get peace of mind knowing your home and belongings are protected.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="icon">📋</div>
+          <h4>Free Detailed Estimates</h4>
+          <p>Transparent, itemized pricing with no hidden costs or surprise add-ons. We tell you exactly what to expect.</p>
+        </div>
+        <div class="why-card fade-in">
+          <div class="icon">🏆</div>
+          <h4>Premium Materials Only</h4>
+          <p>We use top-rated paints and coatings built to handle Ottawa's climate — results that look great and last longer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCOUNT BANNER -->
+  <section id="discount">
+    <div class="container" style="text-align:center">
+      <div class="icon">🎖️</div>
+      <h2>Proud to Support Our Seniors &amp; Military</h2>
+      <p>No Drip Squad is honoured to offer exclusive discounts to Ottawa's senior residents and active or veteran military members. Because the people who've given so much deserve a home they're proud of.</p>
+      <a href="#contact" class="btn-white">Ask About Your Discount</a>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section id="areas">
+    <div class="container">
+      <div class="fade-in" style="text-align:center">
+        <p class="section-label">Where We Work</p>
+        <h2 class="section-title">Serving Ottawa &amp; Surrounding Communities</h2>
+        <p class="section-sub" style="margin:0 auto">If you're within 60km of Ottawa, <strong>No Drip Squad</strong> has you covered.</p>
+      </div>
+      <div class="areas-grid fade-in">
+        <div class="area-tag">📍 Ottawa</div>
+        <div class="area-tag">📍 Kanata</div>
+        <div class="area-tag">📍 Nepean</div>
+        <div class="area-tag">📍 Barrhaven</div>
+        <div class="area-tag">📍 Orleans</div>
+        <div class="area-tag">📍 Gloucester</div>
+        <div class="area-tag">📍 Stittsville</div>
+        <div class="area-tag">📍 Gatineau QC</div>
+        <div class="area-tag">📍 Carleton Place</div>
+        <div class="area-tag">📍 Smiths Falls</div>
+        <div class="area-tag">📍 Kemptville</div>
+        <div class="area-tag">📍 Arnprior</div>
+        <div class="area-tag">📍 Manotick</div>
+        <div class="area-tag">📍 Richmond</div>
+        <div class="area-tag">📍 And More…</div>
+      </div>
+      <p class="areas-note">Not sure if we cover your area? <strong>Call us</strong> — chances are we do!</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="fade-in" style="text-align:center">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">The Work Speaks for Itself</h2>
+        <p class="section-sub" style="margin:0 auto">Every room tells a story. Here are a few of ours.</p>
+      </div>
+      <div class="gallery-grid fade-in">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Bright living room freshly painted"/>
+          <div class="gallery-overlay"><span class="gallery-label">Living Room</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&q=80" alt="Modern bedroom accent wall"/>
+          <div class="gallery-overlay"><span class="gallery-label">Master Bedroom</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="White kitchen cabinets painted"/>
+          <div class="gallery-overlay"><span class="gallery-label">Kitchen Cabinets</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80" alt="House exterior freshly painted"/>
+          <div class="gallery-overlay"><span class="gallery-label">Home Exterior</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Commercial office painted"/>
+          <div class="gallery-overlay"><span class="gallery-label">Commercial Space</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Painted deck backyard"/>
+          <div class="gallery-overlay"><span class="gallery-label">Deck &amp; Fence</span></div>
+        </div>
+      </div>
+      <div class="gallery-cta fade-in">
+        <p>Want results like these for your home or business?</p>
+        <a href="#contact" class="btn-primary">Get Your Free Quote Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="fade-in" style="text-align:center">
+        <p class="section-label">Reviews</p>
+        <h2 class="section-title">What Ottawa Homeowners Say</h2>
+      </div>
+      <div class="testimonials-grid fade-in">
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Absolutely flawless work. They painted our main floor and every edge was perfect — not a single drip. They also gave us a senior discount which we really appreciated!</p>
+          <div class="testimonial-author">Margaret D. <span>Barrhaven, ON</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Hired No Drip Squad for our exterior and deck. Done on time, spotless cleanup, and the house looks incredible. Best decision we made this summer. Highest recommendation!</p>
+          <div class="testimonial-author">James T. <span>Kanata, ON</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>As a veteran, I was really touched that they offered a military discount. The quality of work was exceptional — better than I expected at any price. Will definitely call again.</p>
+          <div class="testimonial-author">Kevin R. <span>Orleans, ON</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="fade-in">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">Get Your Free Estimate Today</h2>
+            <p class="section-sub" style="margin-bottom:36px">Serving Ottawa &amp; surrounding areas within 60km. We respond within 24 hours — usually same day.</p>
+          </div>
+          <div class="contact-detail fade-in">
+            <div class="icon">📞</div>
+            <div><strong>Phone</strong><p>(613) 000-0000</p></div>
+          </div>
+          <div class="contact-detail fade-in">
+            <div class="icon">📧</div>
+            <div><strong>Email</strong><p>info@nodripsquad.ca</p></div>
+          </div>
+          <div class="contact-detail fade-in">
+            <div class="icon">🕐</div>
+            <div><strong>Hours</strong><p>Monday – Saturday: 8:00 AM – 6:00 PM</p></div>
+          </div>
+          <div class="contact-detail fade-in">
+            <div class="icon">📍</div>
+            <div><strong>Service Area</strong><p>Ottawa, Ontario &amp; surrounding communities within 60km</p></div>
+          </div>
+          <div class="contact-detail fade-in">
+            <div class="icon">🎖️</div>
+            <div><strong>Discounts</strong><p>Senior &amp; Military discounts available — just ask!</p></div>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Request My Free Quote</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Jane Smith" required/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="(613) 000-0000" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="jane@example.com" required/>
+          </div>
+          <div class="form-group">
+            <label>Service Type</label>
+            <select>
+              <option value="">Select a service…</option>
+              <option>Interior Painting</option>
+              <option>Exterior Painting</option>
+              <option>Commercial Painting</option>
+              <option>Cabinet Refinishing</option>
+              <option>Deck &amp; Fence Staining</option>
+              <option>Colour Consultation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Property Address</label>
+            <input type="text" placeholder="123 Main St, Ottawa, ON"/>
+          </div>
+          <div class="form-group">
+            <label>Are you a Senior or Military member?</label>
+            <select>
+              <option value="">Please select…</option>
+              <option>Yes – Senior (65+)</option>
+              <option>Yes – Active Military</option>
+              <option>Yes – Veteran</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Additional Details</label>
+            <textarea placeholder="Tell us about your project — size, rooms, timeline, etc."></textarea>
+          </div>
+          <button class="form-submit" onclick="handleSubmit(event)">Request My Free Quote →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><img src="NoDripSquad.jpg" alt="No Drip Squad Logo" style="height:60px; width:auto; filter: brightness(0) invert(1);"/></a>
+        <p class="footer-tagline">Precision You Can See. Quality You Can Trust.<br/>Ottawa's Most Precise Painting Crew.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#areas">Service Areas</a></li>
+          <li><a href="#gallery">Our Work</a></li>
+          <li><a href="#discount">🎖️ Discounts</a></li>
+          <li><a href="#contact">Free Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Service Areas</h5>
+        <div class="footer-areas">
+          <span class="footer-area-tag">Ottawa</span>
+          <span class="footer-area-tag">Kanata</span>
+          <span class="footer-area-tag">Nepean</span>
+          <span class="footer-area-tag">Barrhaven</span>
+          <span class="footer-area-tag">Orleans</span>
+          <span class="footer-area-tag">Stittsville</span>
+          <span class="footer-area-tag">Gatineau</span>
+          <span class="footer-area-tag">Kemptville</span>
+          <span class="footer-area-tag">Arnprior</span>
+          <span class="footer-area-tag">Manotick</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 No Drip Squad. Ottawa, Ontario. All Rights Reserved.</span>
+      <span class="discount-note">🎖️ Proud to Offer Senior &amp; Military Discounts</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target;
+      btn.textContent = '✅ Request Sent! We'll be in touch soon.';
+      btn.style.background = '#1A2E4A';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
